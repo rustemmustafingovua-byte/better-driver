@@ -1,0 +1,168 @@
+== 1.0.1
+Fixes
+• A route built from where you are standing now starts in the direction the car is facing. Before, if point A was set by hand at your own position, the heading was not sent to the router, and the route could start the wrong way (a “turn…” command in the opposite direction).
+• If a route still starts against the direction of travel, the app notices within 3–5 seconds of driving (20 m from the start of the route) and reroutes right away instead of waiting until you are 50 m away.
+• Registration on first launch no longer creates several identifiers from one phone (which sometimes made plans and subscription appear only after a restart).
+== 1.0.0
+New
+• Release 1.0: everything built in the 0.x versions is now in a stable version.
+• App tour. On first launch the app offers to show the buttons on screen and a simulated drive where it guides without GPS: it highlights every button (including the top-collapse ▲ and the air-alert “!” icon) and explains it. You can replay it: Settings → “App tour” (also inside “Help”). At the end there is a link to the full video guide.
+• Before asking for permissions the app explains why it needs precise location and notifications, and reminds you to download maps in advance for guidance without GPS (Settings → “Map & offline” → “Offline routes”) and to turn recording (REC) on before the trip starts.
+• The guidance bottom panel is more compact: arrival time, distance and duration on one line, ↑100 and ↓100 stacked, a lower row of buttons, a long street name scrolls. “Center” and “Stop” now have a solid background like “Reroute”.
+• Current speed is now leftmost: a white circle with black digits and a blue ring (red when over the limit). The speed limit sits above it, slightly to the right. If the speed is unknown or there is no limit, the circle shows a dash.
+• The status line under the arrival time is shorter: ⏸ — stopped, → — moving by dead reckoning without GPS, ✋ — manual correction. Accuracy first (“±30m”), then how long ago GPS was last seen (“GPS −3:02”).
+• The phone's top bar (time and icons) is no longer covered by the map.
+• Sharing your position with other navigation apps (the “((•))” button) is now also in the Google Play version. First choose BlindDriver in “Developer options → Select mock location app”; the video linked in the tour shows how. The floating window over other apps exists only in the version from the website.
+• Without a route, the arrow now sits on the road even with working GPS, not beside it (while moving, when the GPS course matches a road within 25 m). Can be turned off in Settings: “Snap arrow to road with GPS”.
+Fixes
+• After an automatic reroute the next route departure is recognized faster: a 20 s pause instead of 40, and with clear evidence (the particle cloud is clearly off the route, 80 m driven) no pause at all. Previously a wrong reroute could lead along the wrong route for up to 35 seconds.
+• Voice boost no longer raises the phone's system volume to maximum.
+== 0.5.15
+New
+• A blue circle with your current speed now sits next to the speed-limit sign. It turns red when you exceed the route limit. Shown only when the speed is precise: from the OBD adapter or from a trusted GPS.
+• The car arrow on small map scales is smaller and no longer covers the road.
+• Telegram group and website links in “About”.
+Fixes
+• Head units and tablets on Android 12 (e.g. BYD): the new guidance without GPS did not start because of a road-library incompatibility. It starts now.
+• OBD: the adapter speed is now also used for position estimation without GPS. The marker no longer creeps forward when stopped and jumps less while driving; “stopped” comes from OBD, not from vibration, which is unreliable in a car.
+• Without GPS the heading is taken from the last untrusted fix if its speed matches the speedometer. Weak jamming, when GPS speed matches OBD, no longer disables GPS entirely.
+• Fewer false reroutes: near the destination, right after “You have arrived”, and on network position jumps that are impossible for the distance driven (per OBD).
+• The “Route rebuilt” banner closes with a tap or a swipe and no longer covers the bottom panel.
+• Clone OBD adapters: on bus errors a soft recovery is tried first, reconnecting only afterwards; the protocol is remembered.
+• Subscription no longer drops on devices with a wrong clock (head units dated 2028): terms are counted by server time.
+• Without GPS the start position is suggested by the mobile-network cell area when nothing better is available.
+
+== 0.5.14
+New
+• Truck mode. Settings → “Vehicle type”: choose “Truck” and enter the gross weight with load, height and width. The route will avoid bridges, roads and underpasses where signs forbid your weight, height, width or truck traffic, and roads closed to trucks. A truck route may be longer than a car route because of these limits.
+• A separate road graph “Ukraine for trucks” is required (Settings → Map & offline, about 285 MB, better over Wi-Fi). Truck routes are built only from it, even when online: online services do not know these signs. There are no traffic jams in this mode.
+• The sign data comes from OpenStreetMap and is not complete everywhere. Road signs always take priority over the app’s hints.
+• The truck mode is a paid feature (trial or subscription).
+• The top of the screen (search, points, icon row) can now be folded: a triangle next to the position-sharing icon. Folded: the map is free, and only the triangle, the sharing icon and a coloured GPS status dot remain; alerts and GPS warnings stay visible. The state is remembered; a long press on the map unfolds the top. It does not apply during guidance.
+• Traffic lights, pedestrian crossings, crossings of cycle paths, speed bumps and railway level crossings now cover all of Ukraine (speed bumps used to exist only for Kyiv and its region, and traffic lights were shown only on Mapbox routes). The OpenStreetMap data is built into the app and works without internet. Icons appear on the map from zoom 15, not only along the route; the position estimate without GPS takes the slowdowns near them into account. The app does not warn about these places by voice.
+• The database updates itself every few days when there is internet (about 0.6 MB), without a new app version. Settings → Map & offline → “Traffic lights, crossings, rail crossings”: data date and a check button. A new traffic light appears once it has been mapped in OpenStreetMap and a database update has been published.
+
+== 0.5.13
+Fixes
+• The map no longer “freezes” on highways: the grey colour of the passed part of the route used to be rebuilt on every step and slowed the map on long routes. It is now drawn without rebuilding, and the grey/blue boundary sits exactly under the car. At night the passed part is lighter and does not blend with the roads.
+• False automatic reroute after GPS returns: if the first signal after a tunnel or a jammer was inaccurate (≈60 m), the app could decide you had left the route and the marker “jumped” to a neighbouring street. A deviation is now counted only when it is clearly larger than the signal's own error.
+• OBD adapter: if the car connects but does not return speed to the standard request (for example, the BYD Yuan Plus answers “7F 01 22”), after a few attempts the app stops OBD and says so in settings instead of reconnecting endlessly. Navigation keeps working on GPS. To try again, turn the switch off and on.
+• The OBD log now includes the supported-parameter mask and the bus protocol, to help with such cars.
+
+== 0.5.12
+Fixes
+• “Restore previous” button: after an automatic reroute (for example, when you only changed lanes) a banner for 20 seconds brings the previous route back. Automatic rerouting stays quiet for 40 seconds after that.
+• With GPS the map no longer swings back and forth near a turn: a new arrow heading is accepted only when the car's real heading supports it.
+• Without GPS rerouting no longer starts from a far estimated point (on a long highway it could drift tens of kilometres and lead you through villages), and a network-only deviation at highway speed without a turn of the wheel now needs 5 km or more.
+• OBD adapter: gentler protocol detection so adapters that answer with a data stream connect; the adapter's replies are written to the log for analysis.
+• The “Driving/Stopped” buttons now teach the stop detector when GPS is unavailable (the “collected min” counters grow).
+• Android: the passed part of the route is grey and the rest blue; “Share” from Google Maps sets the start, intermediate points (one for free) and the finish; the routes of reroutes are now included in log archives.
+• iPhone: fixed downloading address packs for offline search (“database disk image is malformed”).
+
+Voice
+• New “Voice boost” (Settings → Voice, “loud” by default): the system voice is quiet and music is loud, so the app boosts the voice itself and compresses its dynamics. It helps over music and through Bluetooth to a car stereo. “Prompt volume” now turns the already boosted voice down.
+• New “Stay silent during a phone call” (on by default): during a call or an incoming call the prompts stay silent; everything stays on the screen.
+
+iPhone: English interface and OBD adapter
+• The English interface from 0.5.11 is now on iPhone too: the 🇺🇦 ↔ 🇺🇸 flag in the settings header, metric or US units, voice prompts in the English (US) iOS voice, transliterated street names. “What's new” is in English as well.
+• OBD adapter on iPhone: Settings → “OBD adapter (car speed)” → “Find adapter”. iPhone does not give apps ordinary Bluetooth (Classic), so ELM327 adapters with Bluetooth LE (4.0) and Wi-Fi work. Bluetooth LE: no pairing in iPhone settings, the adapter appears in the list by itself (ignition on, adapter not held by another app). Wi-Fi: connect the iPhone to the adapter's network and enter its address (usually 192.168.0.10:35000).
+• During guidance the Bluetooth LE link keeps working while the app is minimized.
+
+OBD adapter
+• OBD adapter support is free while the test lasts. After the test it becomes part of the paid edition (Pro); we will announce the date in advance.
+
+About
+• Added a “Disclaimer” block: the app is provided “as is”, routes are built by third-party services, and the driver must always check signs, markings and traffic lights.
+
+== 0.5.11
+English interface
+• Switch the interface to English with one flag in the settings header (🇺🇦 ↔ 🇺🇸). Translated: the menu, all settings, help, “What's new”, trip analytics, notifications, voice prompts and air-raid alerts.
+• Street and district names are transliterated by the national standard (“вулиця Північна” → “Pivnichna street”); on the map labels use the English OSM names where they exist.
+• When switching to English the app asks for units: metric (km, km/h) or US (miles, mph). Speed limits in mph are rounded to 5.
+• English voice: Android speaks with an English voice if one is installed (Android settings → Language → Text-to-speech).
+
+OBD adapter support (test)
+• Where to find it: Settings → the “OBD adapter (car speed)” block right after “Voice”. Turn the switch on and choose the adapter from the list of paired Bluetooth devices (pair it first in the phone's Bluetooth settings; the PIN is usually 1234 or 0000).
+• What it gives: the car's speed from the diagnostic port (OBD-II, ELM327 adapters over Bluetooth Classic) instead of an estimate from the network and sensors when GPS is missing. The marker does not run ahead or lag, and it stops exactly at a standstill. With GPS the adapter's speed is only calibrated against the real one.
+• Connection status and the current speed are shown in the same block. It connects automatically while the app is open or guidance is running, and reconnects by itself after a drop.
+• Android and Bluetooth Classic only (iPhone and BLE adapters are not supported yet). The feature is a test: send the log after a trip, it contains “obd” lines.
+
+== 0.5.10
+Guidance without GPS
+• The marker moves more smoothly: fewer sharp jumps forward and back; when you are standing or tapped “Stopped”, it stops at once, without “catching up”.
+• If the particle cloud confidently holds the route, the network no longer reroutes “from a wrong street” (under jamming the network can be off by hundreds of meters while claiming tens).
+• Without GPS automatic rerouting happens no more than once every 25 seconds: several reroutes in a row gave contradictory prompts.
+• If the particle cloud goes noticeably along a parallel street for a long time instead of the route, the off-route tag appears sooner.
+• A network tower that repeats the same point no longer “freezes” the marker for 2–3 minutes: the network ceiling grows with the distance traveled.
+• Speed on a highway without GPS is taken from the limit without a reserve (before, 80% of the limit), so the marker lags less.
+• The street name in the bottom panel is taken from the map under the marker, not from the route step: on a long step it could previously show the name of the first road (“Lvivska Square” instead of “Yaroslaviv Val”).
+
+Movement button
+• One “Auto / Moving / Stopped” button instead of three. Green “MOVING”, red “STOPPED”, grey “AUTO” with a ring: green if the app thinks we are moving, red if we are standing. From “Auto” a tap sets the opposite of what the app thinks; from manual mode it toggles “Moving” and “Stopped”; a long press returns “Auto”. The “Moving” mode now moves the particle cloud too, not just the counter.
+• The recording indicator (REC) moved under the 3D icon.
+
+Interface and permissions
+• The chosen map theme (Auto / Day / Night) is applied to the whole interface: the “From / To / Via” address rows, the route list, menus and panels are no longer white at night.
+• If the location permission is missing, only approximate location is allowed or notifications are off, a strip appears at the top; tapping shows the system request or leads to the app settings.
+• The service no longer crashes when the system refused to start it in the foreground (the reason goes to the log). Closing the app from the “Recent” list stops it if there is no active guidance.
+
+iPhone
+• The first test in TestFlight. The “Auto / Moving / Stopped” button and the new REC position are as on Android; the gyroscope turn angle tolerance is narrower (iPhones have a better gyroscope and compass).
+
+• Numbers that look like coordinates are removed from the crash description added to the log — your location does not get there.
+
+== 0.5.9
+• If the app crashes, it writes the technical reason of the crash (error type and place in the code) to the log. When you send the log to the developer, the crash description for the last 14 days is added automatically — even if trip recording (REC) was off. This way we find and fix such cases faster. There is none of your data in the crash description.
+• If an app update could not be installed, the reason is also written to the log.
+
+== 0.5.8
+Guidance without GPS
+• If the marker lagged and you turned earlier than it reached the intersection, the turn is now counted — no more false “Looks like you missed the turn” and rerouting from a neighboring street.
+• If the network already sees you on the route after the turn, the “Looks like you missed the turn” tag disappears by itself, without rerouting.
+
+Position for Waze and maps (GitHub version)
+• Spoofing is no longer lifted “blindly” every 2.5 minutes (because of this Waze “flew off” for a few seconds). The app watches the satellite state and checks real GPS only when the receiver uses satellites again without signs of jamming. The check is shorter — up to 10 seconds, and Google Maps does not lose spoofing for that time.
+
+Google Play
+• Pro payment through Google Play is prepared (a month or a year, with or without auto-renewal). It will be enabled later — for now everything is available without limits in the Google Play version.
+
+== 0.5.7
+Guidance without GPS
+• The marker no longer “runs away” forward because of a rough network position: outside the city and on highways the towers are far away, and before, the navigator pulled the marker to them too fast — kilometers ahead. Now such a position corrects the marker only carefully.
+• “Looks like you missed the turn” appears earlier: if both the network and road-based dead reckoning already see you past the intersection and you did not turn the wheel, the tag appears at ~30 m and reroutes in 3 s.
+• Rerouting at a standstill takes the direction in which you were driving, not the compass (in a car the compass is often off by tens of degrees) — fewer routes that start with “turn around”.
+• If the phone itself stopped the motion sensors (battery saving mode), the navigator says so once by voice and advises turning off battery saving.
+• A zero-length route (points A and B coincided) no longer starts guidance.
+
+GPS
+• Phones that show a weaker satellite signal (some rugged models) no longer consider good GPS “doubtful”.
+
+Plan
+• “New no-GPS guidance” (by road graph) — during the trial period and with a subscription. Without it the previous guidance logic works, and it is free. The offline map stays free.
+
+== 0.5.6
+New no-GPS guidance (by road graph)
+• Without GPS the phone now computes the position on the road map of Ukraine: it keeps hundreds of possible car positions on roads and discards those that do not match the turns by gyroscope, stops by sensors and the mobile network. On recorded trips the error without GPS is noticeably smaller and does not grow with time, there are fewer false “Looks like you left the route”.
+• A road graph is required (the same one as for offline routes). At launch the app will offer to download it (better over Wi-Fi), or you can do it later: Settings → Map and offline → Offline routes. Without the graph the previous guidance logic works.
+• Switch: Settings → Guidance and voice → “New no-GPS guidance (by road graph)”. If the phone cannot keep up with the computation, the new guidance turns itself off and reports it.
+• Heading check: if the dead reckoning “turned” not where the gyroscope shows, the route is not rerouted from a false point, only on confirmation by the mobile network.
+
+Leaving the route and rerouting
+• After automatic rerouting without GPS the next leaving is noticed in 40 s (was 90 s) — the marker no longer stands for a minute at a turn you have passed.
+• With reliable GPS rerouting waits until you leave the roundabout or turn and the direction becomes clear, and if it had to be postponed, it repeats by itself (before, you had to tap “Reroute”).
+• “Looks like you are heading the other way” no longer triggers because of a single mobile network jump and on exit-ramp loops.
+• After “You have arrived”, when the network shows that you are already near the destination, the route is not rebuilt by itself while parking.
+• If the network position “hung” in a parking place, the route is not built from the parking place.
+
+Start and prompts
+• At the start without GPS the marker waits until the car really starts moving: while you put the phone in the holder, it does not “drive” forward and does not count the phone's turn in your hand as the car's turn.
+• Distances in prompts are multiples of 50 m (“in 300 meters” instead of “in 320 meters”); finer — only when the turn is really closer than 50 m. No “in 0 meters”.
+• After rerouting prompts do not sound in a rush — at least 3 s between far phrases.
+• The compass without recent GPS no longer repositions the marker (in a car it is often off by tens of degrees).
+
+Map without a route
+• The arrow without GPS keeps to the main road and does not jump to parallel driveways and yards.
+
+Other
+• The diagnostics panel (tap the GPS icon) closes with a tap anywhere on the panel; the “No GPS” line only toggles the test.
+• “What's new” section appeared in “About”.

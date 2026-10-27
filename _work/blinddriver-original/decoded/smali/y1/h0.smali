@@ -1,0 +1,53 @@
+.class public final Ly1/h0;
+.super La9/c;
+.source "SourceFile"
+
+
+# instance fields
+.field public l:Lu9/j1;
+
+.field public synthetic m:Ljava/lang/Object;
+
+.field public final synthetic n:Ly1/j0;
+
+.field public o:I
+
+
+# direct methods
+.method public constructor <init>(Ly1/j0;La9/c;)V
+    .locals 0
+
+    iput-object p1, p0, Ly1/h0;->n:Ly1/j0;
+
+    invoke-direct {p0, p2}, La9/c;-><init>(Ly8/c;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 3
+
+    iput-object p1, p0, Ly1/h0;->m:Ljava/lang/Object;
+
+    iget p1, p0, Ly1/h0;->o:I
+
+    const/high16 v0, -0x80000000
+
+    or-int/2addr p1, v0
+
+    iput p1, p0, Ly1/h0;->o:I
+
+    const-wide/16 v0, 0x0
+
+    const/4 p1, 0x0
+
+    iget-object v2, p0, Ly1/h0;->n:Ly1/j0;
+
+    invoke-virtual {v2, v0, v1, p1, p0}, Ly1/j0;->f(JLi9/e;La9/c;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method

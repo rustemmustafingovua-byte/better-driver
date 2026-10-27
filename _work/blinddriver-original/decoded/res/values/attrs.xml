@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="activityAction" format="string" />
+    <attr name="activityName" format="string" />
+    <attr name="alpha" format="float" />
+    <attr name="alwaysExpand" format="boolean" />
+    <attr name="animationBackgroundColor" format="color" />
+    <attr name="buttonSize" format="reference">
+        <enum name="icon_only" value="2" />
+        <enum name="standard" value="0" />
+        <enum name="wide" value="1" />
+    </attr>
+    <attr name="circleCrop" format="boolean" />
+    <attr name="clearTop" format="boolean" />
+    <attr name="colorScheme" format="reference">
+        <enum name="auto" value="2" />
+        <enum name="dark" value="0" />
+        <enum name="light" value="1" />
+    </attr>
+    <attr name="dragRangeMaxRatio" format="float" />
+    <attr name="dragRangeMinRatio" format="float" />
+    <attr name="embeddingDividerColor" format="color|reference" />
+    <attr name="embeddingDividerType">
+        <enum name="draggable" value="1" />
+        <enum name="fixed" value="0" />
+    </attr>
+    <attr name="embeddingDividerWidthDp" format="integer" />
+    <attr name="finishPrimaryWithPlaceholder">
+        <enum name="adjacent" value="2" />
+        <enum name="always" value="1" />
+    </attr>
+    <attr name="finishPrimaryWithSecondary">
+        <enum name="adjacent" value="2" />
+        <enum name="always" value="1" />
+        <enum name="never" value="0" />
+    </attr>
+    <attr name="finishSecondaryWithPrimary">
+        <enum name="adjacent" value="2" />
+        <enum name="always" value="1" />
+        <enum name="never" value="0" />
+    </attr>
+    <attr name="font" format="reference" />
+    <attr name="fontProviderAuthority" format="string" />
+    <attr name="fontProviderCerts" format="reference" />
+    <attr name="fontProviderFallbackQuery" format="string" />
+    <attr name="fontProviderFetchStrategy">
+        <enum name="async" value="1" />
+        <enum name="blocking" value="0" />
+    </attr>
+    <attr name="fontProviderFetchTimeout" format="integer">
+        <enum name="forever" value="-1" />
+    </attr>
+    <attr name="fontProviderPackage" format="string" />
+    <attr name="fontProviderQuery" format="string" />
+    <attr name="fontProviderSystemFontFamily" format="string" />
+    <attr name="fontStyle">
+        <enum name="italic" value="1" />
+        <enum name="normal" value="0" />
+    </attr>
+    <attr name="fontVariationSettings" format="string" />
+    <attr name="fontWeight" format="integer" />
+    <attr name="imageAspectRatio" format="float" />
+    <attr name="imageAspectRatioAdjust">
+        <enum name="adjust_height" value="2" />
+        <enum name="adjust_width" value="1" />
+        <enum name="none" value="0" />
+    </attr>
+    <attr name="isDraggingToFullscreenAllowed" format="boolean" />
+    <attr name="lStar" format="float" />
+    <attr name="maplibre_accuracyAlpha" format="float" />
+    <attr name="maplibre_accuracyAnimationEnabled" format="boolean" />
+    <attr name="maplibre_accuracyColor" format="color" />
+    <attr name="maplibre_actionJournalEnabled" format="boolean" />
+    <attr name="maplibre_actionJournalLogFileCount" format="integer" />
+    <attr name="maplibre_actionJournalLogFileSize" format="integer" />
+    <attr name="maplibre_actionJournalRenderingReportInterval" format="integer" />
+    <attr name="maplibre_apiBaseUri" format="string" />
+    <attr name="maplibre_apiBaseUrl" format="string" />
+    <attr name="maplibre_asyncRendererCleanup" format="boolean" />
+    <attr name="maplibre_backgroundDrawable" format="reference" />
+    <attr name="maplibre_backgroundDrawableStale" format="reference" />
+    <attr name="maplibre_backgroundStaleTintColor" format="color" />
+    <attr name="maplibre_backgroundTintColor" format="color" />
+    <attr name="maplibre_bearingDrawable" format="reference" />
+    <attr name="maplibre_bearingTintColor" format="color" />
+    <attr name="maplibre_bearing_on_top" format="boolean" />
+    <attr name="maplibre_bl_arrowDirection">
+        <enum name="bottom" value="3" />
+        <enum name="left" value="0" />
+        <enum name="right" value="1" />
+        <enum name="top" value="2" />
+    </attr>
+    <attr name="maplibre_bl_arrowHeight" format="dimension|reference" />
+    <attr name="maplibre_bl_arrowPosition" format="dimension|reference" />
+    <attr name="maplibre_bl_arrowWidth" format="dimension|reference" />
+    <attr name="maplibre_bl_bubbleColor" format="color|reference" />
+    <attr name="maplibre_bl_cornersRadius" format="dimension|reference" />
+    <attr name="maplibre_bl_strokeColor" format="color|reference" />
+    <attr name="maplibre_bl_strokeWidth" format="dimension|reference" />
+    <attr name="maplibre_cameraBearing" format="float" />
+    <attr name="maplibre_cameraCenterAltitude" format="float" />
+    <attr name="maplibre_cameraFov" format="float" />
+    <attr name="maplibre_cameraPitchMax" format="float" />
+    <attr name="maplibre_cameraPitchMin" format="float" />
+    <attr name="maplibre_cameraRoll" format="float" />
+    <attr name="maplibre_cameraTargetLat" format="float" />
+    <attr name="maplibre_cameraTargetLng" format="float" />
+    <attr name="maplibre_cameraTilt" format="float" />
+    <attr name="maplibre_cameraZoom" format="float" />
+    <attr name="maplibre_cameraZoomMax" format="float" />
+    <attr name="maplibre_cameraZoomMin" format="float" />
+    <attr name="maplibre_compassAnimationEnabled" format="boolean" />
+    <attr name="maplibre_cross_source_collisions" format="boolean" />
+    <attr name="maplibre_elevation" format="dimension" />
+    <attr name="maplibre_enableStaleState" format="boolean" />
+    <attr name="maplibre_enableTilePrefetch" format="boolean" />
+    <attr name="maplibre_enableZMediaOverlay" format="boolean" />
+    <attr name="maplibre_fastPFOREnabled" format="boolean" />
+    <attr name="maplibre_foregroundDrawable" format="reference" />
+    <attr name="maplibre_foregroundDrawableStale" format="reference" />
+    <attr name="maplibre_foregroundLoadColor" format="color" />
+    <attr name="maplibre_foregroundStaleTintColor" format="color" />
+    <attr name="maplibre_foregroundTintColor" format="color" />
+    <attr name="maplibre_gpsDrawable" format="reference" />
+    <attr name="maplibre_iconPaddingBottom" format="integer" />
+    <attr name="maplibre_iconPaddingLeft" format="integer" />
+    <attr name="maplibre_iconPaddingRight" format="integer" />
+    <attr name="maplibre_iconPaddingTop" format="integer" />
+    <attr name="maplibre_layer_above" format="string" />
+    <attr name="maplibre_layer_below" format="string" />
+    <attr name="maplibre_localIdeographEnabled" format="boolean" />
+    <attr name="maplibre_localIdeographFontFamilies" format="reference" />
+    <attr name="maplibre_localIdeographFontFamily" format="string" />
+    <attr name="maplibre_maxZoomIconScale" format="float" />
+    <attr name="maplibre_minZoomIconScale" format="float" />
+    <attr name="maplibre_pixelRatio" format="float" />
+    <attr name="maplibre_prefetchZoomDelta" format="integer" />
+    <attr name="maplibre_pulsingLocationCircleAlpha" format="float" />
+    <attr name="maplibre_pulsingLocationCircleColor" format="color" />
+    <attr name="maplibre_pulsingLocationCircleDuration" format="float" />
+    <attr name="maplibre_pulsingLocationCircleEnabled" format="boolean" />
+    <attr name="maplibre_pulsingLocationCircleFadeEnabled" format="boolean" />
+    <attr name="maplibre_pulsingLocationCircleInterpolator" format="string" />
+    <attr name="maplibre_pulsingLocationCircleRadius" format="float" />
+    <attr name="maplibre_renderTextureMode" format="boolean" />
+    <attr name="maplibre_renderTextureTranslucentSurface" format="boolean" />
+    <attr name="maplibre_staleStateTimeout" format="integer" min="0" />
+    <attr name="maplibre_trackingAnimationDurationMultiplier" format="float" />
+    <attr name="maplibre_trackingGesturesManagement" format="boolean" />
+    <attr name="maplibre_trackingInitialMoveThreshold" format="dimension" />
+    <attr name="maplibre_trackingMultiFingerMoveThreshold" format="dimension" />
+    <attr name="maplibre_uiAttribution" format="boolean" />
+    <attr name="maplibre_uiAttributionGravity">
+        <flag name="bottom" value="0x50" />
+        <flag name="center" value="0x11" />
+        <flag name="center_horizontal" value="0x1" />
+        <flag name="center_vertical" value="0x10" />
+        <flag name="clip_horizontal" value="0x8" />
+        <flag name="clip_vertical" value="0x80" />
+        <flag name="end" value="0x800005" />
+        <flag name="fill" value="0x77" />
+        <flag name="fill_horizontal" value="0x7" />
+        <flag name="fill_vertical" value="0x70" />
+        <flag name="left" value="0x3" />
+        <flag name="right" value="0x5" />
+        <flag name="start" value="0x800003" />
+        <flag name="top" value="0x30" />
+    </attr>
+    <attr name="maplibre_uiAttributionMarginBottom" format="dimension" />
+    <attr name="maplibre_uiAttributionMarginLeft" format="dimension" />
+    <attr name="maplibre_uiAttributionMarginRight" format="dimension" />
+    <attr name="maplibre_uiAttributionMarginTop" format="dimension" />
+    <attr name="maplibre_uiAttributionTintColor" format="color" />
+    <attr name="maplibre_uiCompass" format="boolean" />
+    <attr name="maplibre_uiCompassDrawable" format="reference" />
+    <attr name="maplibre_uiCompassFadeFacingNorth" format="boolean" />
+    <attr name="maplibre_uiCompassGravity">
+        <flag name="bottom" value="0x50" />
+        <flag name="center" value="0x11" />
+        <flag name="center_horizontal" value="0x1" />
+        <flag name="center_vertical" value="0x10" />
+        <flag name="clip_horizontal" value="0x8" />
+        <flag name="clip_vertical" value="0x80" />
+        <flag name="end" value="0x800005" />
+        <flag name="fill" value="0x77" />
+        <flag name="fill_horizontal" value="0x7" />
+        <flag name="fill_vertical" value="0x70" />
+        <flag name="left" value="0x3" />
+        <flag name="right" value="0x5" />
+        <flag name="start" value="0x800003" />
+        <flag name="top" value="0x30" />
+    </attr>
+    <attr name="maplibre_uiCompassMarginBottom" format="dimension" />
+    <attr name="maplibre_uiCompassMarginLeft" format="dimension" />
+    <attr name="maplibre_uiCompassMarginRight" format="dimension" />
+    <attr name="maplibre_uiCompassMarginTop" format="dimension" />
+    <attr name="maplibre_uiDoubleTapGestures" format="boolean" />
+    <attr name="maplibre_uiHorizontalScrollGestures" format="boolean" />
+    <attr name="maplibre_uiLogo" format="boolean" />
+    <attr name="maplibre_uiLogoGravity">
+        <flag name="bottom" value="0x50" />
+        <flag name="center" value="0x11" />
+        <flag name="center_horizontal" value="0x1" />
+        <flag name="center_vertical" value="0x10" />
+        <flag name="clip_horizontal" value="0x8" />
+        <flag name="clip_vertical" value="0x80" />
+        <flag name="end" value="0x800005" />
+        <flag name="fill" value="0x77" />
+        <flag name="fill_horizontal" value="0x7" />
+        <flag name="fill_vertical" value="0x70" />
+        <flag name="left" value="0x3" />
+        <flag name="right" value="0x5" />
+        <flag name="start" value="0x800003" />
+        <flag name="top" value="0x30" />
+    </attr>
+    <attr name="maplibre_uiLogoMarginBottom" format="dimension" />
+    <attr name="maplibre_uiLogoMarginLeft" format="dimension" />
+    <attr name="maplibre_uiLogoMarginRight" format="dimension" />
+    <attr name="maplibre_uiLogoMarginTop" format="dimension" />
+    <attr name="maplibre_uiQuickZoomGestures" format="boolean" />
+    <attr name="maplibre_uiRotateGestures" format="boolean" />
+    <attr name="maplibre_uiScrollGestures" format="boolean" />
+    <attr name="maplibre_uiTiltGestures" format="boolean" />
+    <attr name="maplibre_uiZoomGestures" format="boolean" />
+    <attr name="nestedScrollViewStyle" format="reference" />
+    <attr name="placeholderActivityName" format="string" />
+    <attr name="primaryActivityName" format="string" />
+    <attr name="queryPatterns" format="reference" />
+    <attr name="scopeUris" format="string|reference" />
+    <attr name="secondaryActivityAction" format="string" />
+    <attr name="secondaryActivityName" format="string" />
+    <attr name="shortcutMatchRequired" format="boolean" />
+    <attr name="splitChangeAnimation">
+        <enum name="jumpCut" value="1" />
+        <enum name="systemDefault" value="0" />
+    </attr>
+    <attr name="splitCloseAnimation">
+        <enum name="jumpCut" value="1" />
+        <enum name="systemDefault" value="0" />
+    </attr>
+    <attr name="splitLayoutDirection">
+        <enum name="bottomToTop" value="4" />
+        <enum name="locale" value="0" />
+        <enum name="ltr" value="1" />
+        <enum name="rtl" value="2" />
+        <enum name="topToBottom" value="3" />
+    </attr>
+    <attr name="splitMaxAspectRatioInLandscape" format="float">
+        <enum name="alwaysAllow" value="0" />
+        <enum name="alwaysDisallow" value="-1" />
+    </attr>
+    <attr name="splitMaxAspectRatioInPortrait" format="float">
+        <enum name="alwaysAllow" value="0" />
+        <enum name="alwaysDisallow" value="-1" />
+    </attr>
+    <attr name="splitMinHeightDp" format="integer" />
+    <attr name="splitMinSmallestWidthDp" format="integer" />
+    <attr name="splitMinWidthDp" format="integer" />
+    <attr name="splitOpenAnimation">
+        <enum name="jumpCut" value="1" />
+        <enum name="systemDefault" value="0" />
+    </attr>
+    <attr name="splitRatio" format="float" />
+    <attr name="stickyPlaceholder" format="boolean" />
+    <attr name="tag" format="string" />
+    <attr name="ttcIndex" format="integer" />
+</resources>

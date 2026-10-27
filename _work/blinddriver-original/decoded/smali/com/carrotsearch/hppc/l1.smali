@@ -1,0 +1,11 @@
+.class public interface abstract Lcom/carrotsearch/hppc/l1;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Iterable;
+
+
+# virtual methods
+.method public abstract size()I
+.end method

@@ -1,0 +1,77 @@
+.class public Lio/sentry/android/core/performance/ActivityLifecycleCallbacksAdapter;
+.super Ljava/lang/Object;
+.source "ActivityLifecycleCallbacksAdapter.java"
+
+# interfaces
+.implements Landroid/app/Application$ActivityLifecycleCallbacks;
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 9
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onActivityCreated(Landroid/app/Activity;Landroid/os/Bundle;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+    .param p2, "savedInstanceState"    # Landroid/os/Bundle;
+
+    .line 12
+    return-void
+.end method
+
+.method public onActivityDestroyed(Landroid/app/Activity;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+
+    .line 30
+    return-void
+.end method
+
+.method public onActivityPaused(Landroid/app/Activity;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+
+    .line 21
+    return-void
+.end method
+
+.method public onActivityResumed(Landroid/app/Activity;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+
+    .line 18
+    return-void
+.end method
+
+.method public onActivitySaveInstanceState(Landroid/app/Activity;Landroid/os/Bundle;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+    .param p2, "outState"    # Landroid/os/Bundle;
+
+    .line 27
+    return-void
+.end method
+
+.method public onActivityStarted(Landroid/app/Activity;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+
+    .line 15
+    return-void
+.end method
+
+.method public onActivityStopped(Landroid/app/Activity;)V
+    .locals 0
+    .param p1, "activity"    # Landroid/app/Activity;
+
+    .line 24
+    return-void
+.end method

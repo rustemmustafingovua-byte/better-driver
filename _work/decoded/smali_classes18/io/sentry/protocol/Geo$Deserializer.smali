@@ -1,0 +1,242 @@
+.class public final Lio/sentry/protocol/Geo$Deserializer;
+.super Ljava/lang/Object;
+.source "Geo.java"
+
+# interfaces
+.implements Lio/sentry/JsonDeserializer;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/sentry/protocol/Geo;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Deserializer"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Lio/sentry/JsonDeserializer<",
+        "Lio/sentry/protocol/Geo;",
+        ">;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 161
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public deserialize(Lio/sentry/ObjectReader;Lio/sentry/ILogger;)Lio/sentry/protocol/Geo;
+    .locals 4
+    .param p1, "reader"    # Lio/sentry/ObjectReader;
+    .param p2, "logger"    # Lio/sentry/ILogger;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/Exception;
+        }
+    .end annotation
+
+    .line 166
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->beginObject()V
+
+    .line 167
+    new-instance v0, Lio/sentry/protocol/Geo;
+
+    invoke-direct {v0}, Lio/sentry/protocol/Geo;-><init>()V
+
+    .line 168
+    .local v0, "geo":Lio/sentry/protocol/Geo;
+    const/4 v1, 0x0
+
+    .line 169
+    .local v1, "unknown":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;"
+    :goto_0
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->peek()Lio/sentry/vendor/gson/stream/JsonToken;
+
+    move-result-object v2
+
+    sget-object v3, Lio/sentry/vendor/gson/stream/JsonToken;->NAME:Lio/sentry/vendor/gson/stream/JsonToken;
+
+    if-ne v2, v3, :cond_2
+
+    .line 170
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->nextName()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 171
+    .local v2, "nextName":Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v3
+
+    sparse-switch v3, :sswitch_data_0
+
+    :cond_0
+    goto :goto_1
+
+    :sswitch_0
+    const-string v3, "country_code"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    const/4 v3, 0x1
+
+    goto :goto_2
+
+    :sswitch_1
+    const-string v3, "city"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    const/4 v3, 0x0
+
+    goto :goto_2
+
+    :sswitch_2
+    const-string v3, "region"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    const/4 v3, 0x2
+
+    goto :goto_2
+
+    :goto_1
+    const/4 v3, -0x1
+
+    :goto_2
+    packed-switch v3, :pswitch_data_0
+
+    .line 182
+    if-nez v1, :cond_1
+
+    .line 183
+    new-instance v3, Ljava/util/concurrent/ConcurrentHashMap;
+
+    invoke-direct {v3}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+
+    move-object v1, v3
+
+    goto :goto_3
+
+    .line 179
+    :pswitch_0
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->nextStringOrNull()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v0, v3}, Lio/sentry/protocol/Geo;->access$202(Lio/sentry/protocol/Geo;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 180
+    goto :goto_4
+
+    .line 176
+    :pswitch_1
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->nextStringOrNull()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v0, v3}, Lio/sentry/protocol/Geo;->access$102(Lio/sentry/protocol/Geo;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 177
+    goto :goto_4
+
+    .line 173
+    :pswitch_2
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->nextStringOrNull()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v0, v3}, Lio/sentry/protocol/Geo;->access$002(Lio/sentry/protocol/Geo;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 174
+    goto :goto_4
+
+    .line 185
+    :cond_1
+    :goto_3
+    invoke-interface {p1, p2, v1, v2}, Lio/sentry/ObjectReader;->nextUnknown(Lio/sentry/ILogger;Ljava/util/Map;Ljava/lang/String;)V
+
+    .line 188
+    .end local v2    # "nextName":Ljava/lang/String;
+    :goto_4
+    goto :goto_0
+
+    .line 189
+    :cond_2
+    invoke-virtual {v0, v1}, Lio/sentry/protocol/Geo;->setUnknown(Ljava/util/Map;)V
+
+    .line 190
+    invoke-interface {p1}, Lio/sentry/ObjectReader;->endObject()V
+
+    .line 191
+    return-object v0
+
+    nop
+
+    :sswitch_data_0
+    .sparse-switch
+        -0x37b7d90c -> :sswitch_2
+        0x2e996b -> :sswitch_1
+        0x58475cf6 -> :sswitch_0
+    .end sparse-switch
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public bridge synthetic deserialize(Lio/sentry/ObjectReader;Lio/sentry/ILogger;)Ljava/lang/Object;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x1000,
+            0x1000
+        }
+        names = {
+            null,
+            null
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/Exception;
+        }
+    .end annotation
+
+    .line 161
+    invoke-virtual {p0, p1, p2}, Lio/sentry/protocol/Geo$Deserializer;->deserialize(Lio/sentry/ObjectReader;Lio/sentry/ILogger;)Lio/sentry/protocol/Geo;
+
+    move-result-object p1
+
+    return-object p1
+.end method

@@ -1,0 +1,6 @@
+# properties will be filled by git-commit-id-plugin during maven build
+39203ebde6f7e3a2e751b1446e5a0b052e0f7f02
+2025-10-14T16:26:49+0200
+deployment: change to central plugin
+master
+true

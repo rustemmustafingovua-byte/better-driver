@@ -1,0 +1,195 @@
+.class public final Lmb/p6;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field public final a:[Lorg/codehaus/janino/util/r0;
+
+.field public final b:[Lorg/codehaus/janino/util/r0;
+
+
+# direct methods
+.method public constructor <init>([Lorg/codehaus/janino/util/r0;[Lorg/codehaus/janino/util/r0;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    invoke-virtual {p1}, [Lorg/codehaus/janino/util/r0;->clone()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, [Lorg/codehaus/janino/util/r0;
+
+    iput-object p1, p0, Lmb/p6;->a:[Lorg/codehaus/janino/util/r0;
+
+    invoke-virtual {p2}, [Lorg/codehaus/janino/util/r0;->clone()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, [Lorg/codehaus/janino/util/r0;
+
+    iput-object p1, p0, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()[Lorg/codehaus/janino/util/r0;
+    .locals 0
+
+    iget-object p0, p0, Lmb/p6;->a:[Lorg/codehaus/janino/util/r0;
+
+    invoke-virtual {p0}, [Lorg/codehaus/janino/util/r0;->clone()Ljava/lang/Object;
+
+    move-result-object p0
+
+    check-cast p0, [Lorg/codehaus/janino/util/r0;
+
+    return-object p0
+.end method
+
+.method public final b()[Lorg/codehaus/janino/util/r0;
+    .locals 0
+
+    iget-object p0, p0, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    invoke-virtual {p0}, [Lorg/codehaus/janino/util/r0;->clone()Ljava/lang/Object;
+
+    move-result-object p0
+
+    check-cast p0, [Lorg/codehaus/janino/util/r0;
+
+    return-object p0
+.end method
+
+.method public final c()Lorg/codehaus/janino/util/r0;
+    .locals 1
+
+    iget-object p0, p0, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    array-length v0, p0
+
+    if-eqz v0, :cond_0
+
+    array-length v0, p0
+
+    add-int/lit8 v0, v0, -0x1
+
+    aget-object p0, p0, v0
+
+    return-object p0
+
+    :cond_0
+    new-instance p0, Lhb/b;
+
+    const-string v0, "Operand stack underflow"
+
+    invoke-direct {p0, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 4
+
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    :cond_0
+    instance-of v1, p1, Lmb/p6;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_1
+
+    return v2
+
+    :cond_1
+    check-cast p1, Lmb/p6;
+
+    iget-object v1, p0, Lmb/p6;->a:[Lorg/codehaus/janino/util/r0;
+
+    iget-object v3, p1, Lmb/p6;->a:[Lorg/codehaus/janino/util/r0;
+
+    invoke-static {v1, v3}, Ljava/util/Arrays;->equals([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    iget-object p0, p0, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    iget-object p1, p1, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    invoke-static {p0, p1}, Ljava/util/Arrays;->equals([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_2
+
+    return v0
+
+    :cond_2
+    return v2
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    iget-object v0, p0, Lmb/p6;->a:[Lorg/codehaus/janino/util/r0;
+
+    invoke-static {v0}, Ljava/util/Arrays;->hashCode([Ljava/lang/Object;)I
+
+    move-result v0
+
+    iget-object p0, p0, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    invoke-static {p0}, Ljava/util/Arrays;->hashCode([Ljava/lang/Object;)I
+
+    move-result p0
+
+    xor-int/2addr p0, v0
+
+    return p0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "locals="
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lmb/p6;->a:[Lorg/codehaus/janino/util/r0;
+
+    invoke-static {v1}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", stack="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object p0, p0, Lmb/p6;->b:[Lorg/codehaus/janino/util/r0;
+
+    invoke-static {p0}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method

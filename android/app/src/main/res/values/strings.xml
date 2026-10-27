@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BetterDriver</string>
+    <string name="update_installed_message">Натисніть, щоб відкрити.</string>
+    <string name="update_check_title">Перевірити оновлення</string>
+    <string name="update_check_message">Поточна версія: 1.1.0</string>
+    <string name="update_available">Доступне оновлення</string>
+    <string name="update_no_update">У вас остання версія</string>
+</resources>

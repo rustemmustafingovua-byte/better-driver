@@ -1,0 +1,32 @@
+.class public final Lcom/graphhopper/util/Parameters$Algorithms$AltRoute;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/graphhopper/util/Parameters$Algorithms;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "AltRoute"
+.end annotation
+
+
+# static fields
+.field public static final MAX_PATHS:Ljava/lang/String; = "alternative_route.max_paths"
+
+.field public static final MAX_SHARE:Ljava/lang/String; = "alternative_route.max_share_factor"
+
+.field public static final MAX_WEIGHT:Ljava/lang/String; = "alternative_route.max_weight_factor"
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
