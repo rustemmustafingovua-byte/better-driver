@@ -1,0 +1,12 @@
+{
+  "name": "better-driver",
+  "version": "1.2.0",
+  "description": "Enhanced offline-first GPS navigation for Ukraine with anti-jamming, satellite/hybrid maps.",
+  "scripts": {
+    "test": "flutter test",
+    "build": "flutter build apk"
+  },
+  "keywords": ["flutter", "gps", "navigation", "offline"],
+  "author": "rustemmustafingovua-byte",
+  "license": "MIT"
+}
