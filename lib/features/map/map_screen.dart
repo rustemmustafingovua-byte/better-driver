@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -6,13 +5,15 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:geolocator/geolocator.dart';
-import '../../core/services/tile_cache_service.dart';
+import '../../core/services/cached_tile_provider.dart';
 import '../../core/services/map_style_service.dart';
 import '../../core/services/road_objects_service.dart';
+import '../../core/services/cloud/cloud_sync_service.dart';
 
 import '../search/search_screen.dart';
 import '../address/address_info_screen.dart';
 import '../qr/qr_scan_screen.dart';
+import '../cloud/cloud_sync_screen.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -31,10 +32,12 @@ class _MapScreenState extends State<MapScreen> {
   List<RoadObject> _roadObjects = [];
   bool _roadObjectsLoaded = false;
   StreamSubscription<Position>? _positionSub;
+  bool _isOnline = true;
 
   @override
   void initState() {
     super.initState();
+    CachedTileProvider.init();
     TileCacheService.init();
     _loadCameras();
     _loadRoadObjects();
@@ -72,6 +75,17 @@ class _MapScreenState extends State<MapScreen> {
       });
     } catch (_) {
       // Location unavailable — the map still works as a viewer.
+    }
+    _checkConnectivity();
+  }
+
+  Future<void> _checkConnectivity() async {
+    try {
+      final result = await InternetAddress.lookup('example.com').timeout(const Duration(seconds: 3));
+      if (!mounted) return;
+      setState(() => _isOnline = result.isNotEmpty);
+    } catch (_) {
+      if (mounted) setState(() => _isOnline = false);
     }
   }
 
@@ -181,6 +195,16 @@ class _MapScreenState extends State<MapScreen> {
         title: const Text('Карта'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.cloud_upload),
+            tooltip: 'Хмара',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CloudSyncScreen()),
+              );
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.search),
             tooltip: 'Пошук адреси',
             onPressed: _openSearch,
@@ -226,6 +250,7 @@ class _MapScreenState extends State<MapScreen> {
               TileLayer(
                 urlTemplate: currentStyle.urlTemplate,
                 userAgentPackageName: 'ua.nav.betterdriver',
+                tileProvider: CachedTileProvider(),
               ),
               if (currentStyle.overlayUrlTemplate != null)
                 TileLayer(
@@ -292,6 +317,26 @@ class _MapScreenState extends State<MapScreen> {
                 ),
             ],
           ),
+          if (!_isOnline)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.errorContainer,
+                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12)),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.wifi_off_rounded, size: 18, color: Colors.white),
+                    const SizedBox(width: 8),
+                    Expanded(child: Text('Офлайн-режим. Використовуються кешовані тайли.', style: theme.textTheme.bodySmall?.copyWith(color: Colors.white))),
+                  ],
+                ),
+              ),
+            ),
           if (_selectedPoint != null)
             Positioned(
               top: 16,

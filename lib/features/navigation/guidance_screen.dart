@@ -56,6 +56,7 @@ class _GuidanceScreenState extends State<GuidanceScreen> {
   double _speedKmh = 0;
   double _manualOffsetM = 0;
   double _estimatedErrorM = 0;
+  int _speedLimitKmph = 0;
 
   _VoiceMode _voiceMode = _VoiceMode.all;
   bool _mapFollowsCourse = true;
@@ -81,6 +82,7 @@ class _GuidanceScreenState extends State<GuidanceScreen> {
 
   // Road name cache for guidance instructions.
   final Map<String, String> _roadNameCache = {};
+  String _currentRoadName = '';
   DateTime? _lastReverseGeocode;
 
   @override
@@ -232,6 +234,9 @@ class _GuidanceScreenState extends State<GuidanceScreen> {
     if (_lastReverseGeocode == null || now.difference(_lastReverseGeocode!) > const Duration(seconds: 10)) {
       nextRoad = await _getRoadName(next);
       _lastReverseGeocode = now;
+      if (nextRoad.isNotEmpty) {
+        setState(() => _currentRoadName = nextRoad);
+      }
     } else if (_roadNameCache.isNotEmpty) {
       final key = '${next.latitude.toStringAsFixed(4)},${next.longitude.toStringAsFixed(4)}';
       nextRoad = _roadNameCache[key] ?? '';
@@ -265,15 +270,27 @@ class _GuidanceScreenState extends State<GuidanceScreen> {
             'camera_${warning.camera.id}',
             'Увага, камера контролю швидкості. Ліміт $limit кілометрів на годину.',
           );
+          setState(() => _speedLimitKmph = limit);
         }
+      } else {
+        // Clear speed limit when no camera nearby.
+        setState(() => _speedLimitKmph = 0);
       }
+    }
+
+    // Speed limit alert from OSRM/camera data.
+    if (_speedLimitKmph > 0 && _speedKmh > _speedLimitKmph + 5) {
+      _announceOnce(
+        'speed_limit',
+        'Перевищення швидкості. Ліміт $_speedLimitKmph.',
+      );
     }
 
     // Jamming notice.
     if (fix.trust == GpsTrust.jammed || fix.trust == GpsTrust.lost) {
       _announceOnce(
         'jammed',
-        'GPS недоступний. Веду за розрахунком.',
+        'GPS недоступний. Веду за розрахунковим шляхом.',
         onlyWhen: _voiceMode == _VoiceMode.all,
       );
     }
@@ -731,6 +748,26 @@ class _GuidanceScreenState extends State<GuidanceScreen> {
                 ),
               ],
             ),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                child: _Stat(
+                  label: 'Ліміт',
+                  value: _speedLimitKmph > 0 ? '$_speedLimitKmph км/год' : '--',
+                  icon: Icons.speed,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: _Stat(
+                  label: 'Дорога',
+                  value: _currentRoadName.isEmpty ? '--' : _currentRoadName,
+                  icon: Icons.road,
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 10),
           Row(

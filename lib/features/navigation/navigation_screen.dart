@@ -46,6 +46,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   String _statusMessage = '';
   bool _showPanel = true;
   TravelProfile _profile = TravelProfile.car;
+  TruckParameters _truckParams = const TruckParameters();
 
   LatLng? _targetPoint;
   String _targetLabel = '';
@@ -59,6 +60,17 @@ class _NavigationScreenState extends State<NavigationScreen> {
     _initTts();
     _initNotifications();
     _initLocation();
+    _loadProfile();
+  }
+
+  Future<void> _loadProfile() async {
+    final service = TravelProfileService();
+    await service.load();
+    if (!mounted) return;
+    setState(() {
+      _profile = service.current;
+      _truckParams = service.truckParams;
+    });
   }
 
   Future<void> _initTts() async {
@@ -221,6 +233,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
             [target.latitude, target.longitude],
             from,
             profile: _profile,
+            truckParams: _profile == TravelProfile.truck ? _truckParams : null,
           )
           .timeout(const Duration(seconds: 25));
 

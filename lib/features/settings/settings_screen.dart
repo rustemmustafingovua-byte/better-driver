@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../map/cubit/map_cubit.dart';
 import '../../core/services/travel_profile_service.dart';
+import '../../core/services/cloud/cloud_sync_service.dart';
 import 'truck_params_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -314,6 +315,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       widget.onThemeChanged(mode);
                     },
                   ),
+                ),
+                ListTile(
+                  title: const Text('Хмара / Синхронізація'),
+                  subtitle: const Text('Синхронізація маршрутів і налаштувань'),
+                  trailing: const Icon(Icons.cloud_upload),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CloudSyncScreen()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Панель індикації'),
+                  subtitle: const Text('OBD, швидкість, обороти'),
+                  trailing: const Icon(Icons.dashboard),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DashboardScreen()),
+                    );
+                  },
                 ),
                 ListTile(
                   title: const Text('OBD-адаптер'),
